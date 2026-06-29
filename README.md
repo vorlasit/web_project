@@ -166,5 +166,8 @@
     }
 migare for backend
 
-  python manage.py migrate
+        python manage.py migrate
+create super user
+        
+        python manage.py createsuperuser
     
