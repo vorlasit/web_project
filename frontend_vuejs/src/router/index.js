@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../components/Login.vue'; // ทางไปหน้า Login ของคุณ
-import Dashboard from '../components/Dashboard.vue'; // หน้า Dashboard ที่จะสร้างใหม่
+
+import MainLayout from "@/layouts/MainLayout.vue";
+import Dashboard from "@/views/Dashboard.vue";
+import Profile from "@/views/Profile.vue";
+import Settings from "@/views/Settings.vue";
+import Login from "@/views/Login.vue";
 
 const routes = [
   {
@@ -9,9 +13,23 @@ const routes = [
     component: Login
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: Dashboard,
+    path: "/app",
+    component: MainLayout,
+    children: [
+      {
+        path: "dashboard",
+        component: Dashboard,
+      },
+      {
+        path: "profile",
+        component: Profile,
+      },
+      {
+        path: "settings",
+        component: Settings,
+      },
+    ],
+
     // # 🔒 ป้องกันไม่ให้แอบเข้าหน้านี้ถ้ายังไม่ได้ล็อกอิน
     beforeEnter: (to, from, next) => {
       const token = localStorage.getItem('user-token');

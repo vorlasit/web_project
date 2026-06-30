@@ -90,7 +90,7 @@ const handleLogin = async () => {
       timerProgressBar: true
     });
 
-    router.push('/dashboard');
+    router.push('/app/dashboard');
 
   } catch (error) {
     if (error.response && error.response.status === 401) {
